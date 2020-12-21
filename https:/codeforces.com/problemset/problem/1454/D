@@ -1,0 +1,65 @@
+
+
+
+
+
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        int cmax=0,cele=0;
+        for(int i=2;i*i<=n;i++){
+            int count=0;
+            int a=n;
+            if(a%i==0){
+                while(a%i==0){
+                    count++;
+                    a=a/i;
+                }
+            }
+            if(count>cele){
+                cmax=i;
+                cele=count;
+            }
+        }
+         if(cele == 0){
+      cout << 1 << "\n" << n << "\n";
+      continue;
+    }
+    else{
+        int tmp = n;
+        cout << cele << "\n";
+        for(int i=0;i<cele-1;i++){
+            cout<<cmax<<" ";
+            tmp=tmp/cmax;
+        }
+        cout<<tmp<<endl;
+    }
+    }
+}
