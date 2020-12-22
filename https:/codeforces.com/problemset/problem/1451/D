@@ -1,0 +1,52 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+// bool dfs(int node,vi graph,vb vis,vb recur){
+//     if(!vis){
+//         vis[i]=1;
+//         recur[i]=1;
+//         for(auto child:graph[node]){
+//             if(!vis[child]&&dfs(child,graph,vis,recur)) return true;
+//             else if(recur[child]) return true;
+//         }
+//     }
+//     recur[node]=0;
+//     return false;
+// }
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int d,k;
+        cin>>d>>k;
+        int x=0,y=0;
+        while(1){
+            if(x<=y&&((x+k)*(x+k)+pow(y,2)<=pow(d,2))) x+=k;
+            else if(x>y&&(pow(x,2)+(y+k)*(y+k)<=pow(d,2))) y+=k;
+            else break;
+        }
+        if(x==y) cout<<"Utkarsh"<<endl;
+        else cout<<"Ashish"<<endl;
+    }
+}
