@@ -1,0 +1,60 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+bool dfs(int node,vi graph[],vb &vis,vb &recur){
+    if(!vis[node]){
+        vis[node]=1;
+        recur[node]=1;
+        for(auto child:graph[node]){
+            if(!vis[child]&&dfs(child,graph,vis,recur)) return true;
+            else if(recur[child]) return true;
+        }
+    }
+    recur[node]=0;
+    return false;
+}
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n,m;
+        cin>>n>>m;
+        int ans=m;
+        vi graph[n+1];
+        vb vis(n+1),recur(n+1);
+        int diag=m;
+        for(int i=0;i<m;i++){
+            int x,y;
+            cin>>x>>y;
+            if(x==y) diag--;
+            else graph[x].pb(y);
+        }
+        for(int i=1;i<=n;i++){
+            if(!vis[i]&&dfs(i,graph,vis,recur)){
+                diag++;
+            }
+        }
+        cout<<diag<<endl;
+    }
+}
