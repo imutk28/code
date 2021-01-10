@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+const int MAX=2e5+7;
+int t,n,k;
+int h[MAX];
+
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        cin>>n>>k;
+		for(int i=1;i<=n;++i){
+			cin>>h[i];
+		}
+ 
+		pair<int,int> pi;
+		pi.first = h[1]+1;
+		pi.second = h[1] + k;
+		bool ok = true;
+		for(int i=2;i<=n-1;++i){
+			int mn = h[i] + 1;
+			int mx = h[i] + 2*k - 1;
+			if(pi.second < mn || pi.first > mx){
+				ok = false;
+				break;
+			}
+ 
+			pi.first = max(mn,pi.first-k+1);
+			pi.second = min(mx,pi.second+k-1);
+		}
+ 
+		int lastMn = h[n] + 1;
+		int lastMx = h[n] + k;
+		if(pi.second < lastMn || pi.first > lastMx){
+			ok = false;
+		}
+ 
+		if(ok){
+			cout<<"YES\n";
+		}else{
+			cout<<"NO\n";
+		}
+    }
+}
