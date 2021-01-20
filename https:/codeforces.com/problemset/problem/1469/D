@@ -1,0 +1,53 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+void solve(int n,vector<int>& x,vector<int>& y){
+    if(n<=2) return;
+    if(n==3){
+        x.pb(3); y.pb(2);
+		x.pb(3); y.pb(2);
+		return;
+    }
+    int q=sqrt(n);
+    int temp=n/q;
+    if(n%q) temp++;
+    for(int i=temp+1;i<n;i++){
+        x.pb(i);y.pb(n);
+    }
+    x.pb(n);y.pb(q);
+    x.pb(n);y.pb(temp);
+    solve(temp,x,y);
+}
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vi a,b;
+        solve(n,a,b);
+        cout<<a.size()<<endl;
+        for(int i=0;i<a.size();i++) cout<<a[i]<<" "<<b[i]<<endl;
+    }
+}
