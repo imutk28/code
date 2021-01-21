@@ -1,0 +1,58 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n,m,a,b;
+	    cin>>n>>m>>a>>b;
+	    vector<int> bomb(m);
+	    for(int i=0;i<m;i++)cin>>bomb[i];
+	    sort(bomb.begin(),bomb.end());
+	    if(a>b)
+	    {
+	        a = n-a+1;
+	        b = n-b+1;
+	    }
+	    int cnt = b-a-1;
+	    if(cnt==0)cout<<"0\n";
+	    else
+	    {
+	        cnt = min(cnt,m);
+	        int ans=0,steps=b-1;
+	        int upto = upper_bound(bomb.begin(),bomb.begin()+cnt,steps)-bomb.begin()-1;
+	        for(;upto>=0;upto--)
+	        {
+	            if(bomb[upto]<steps)
+	            {
+	                ans++;
+	                steps--;
+	            }
+	        }
+	        cout<<ans<<"\n";
+	    }
+    }
+}
