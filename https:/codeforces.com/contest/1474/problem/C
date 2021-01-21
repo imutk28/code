@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long int
+#define tp(a,n) for(ll i=0;i<n;i++) cin>>a[i]
+#define f(i,x,n) for(ll i=x;i<n;i++)
+#define pb push_back
+#define vl vector<ll>
+#define mi map<int,int>
+#define mp make_pair
+int main(){
+ll t,n,k;
+cin>>t;
+while(t--)
+{
+cin>>n;
+ll k,x,a[2*n],fl=0;
+multiset<ll,greater<ll> > m;
+f(i,0,2*n)
+{cin>>a[i];
+m.insert(a[i]);
+}
+sort(a,a+2*n);
+
+f(i,0,2*n-1)
+{
+x=a[i]+a[2*n-1];
+multiset<ll,greater<ll> > ms;
+ms=m;
+vector<pair<ll,ll>> v;
+ll f=0;
+while(!ms.empty())
+{
+    ll y=*ms.begin();
+    ms.erase(ms.begin());
+    ll z=x-y;
+    if(ms.find(z)!=ms.end())
+    {
+        ms.erase(ms.find(z));
+        v.pb({y,z});
+        x=max(y,z);
+    }
+    else
+    {
+        f=1;
+        break;
+    }
+}
+if(!f&&ms.empty())
+{
+    cout<<"YES\n";
+    cout<<a[i]+a[2*n-1]<<endl;
+    for(auto it:v)
+    {
+        cout<<it.first<<" "<<it.second<<endl;
+    }
+    fl=1;
+    break;
+}
+
+
+}
+if(!fl)
+cout<<"NO\n";
+}
+}
