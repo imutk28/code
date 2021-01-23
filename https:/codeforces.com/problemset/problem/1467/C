@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+
+
+int32_t main()
+{
+    int t=1;
+    // cin>>t;
+    while(t--){
+        int n1,n2,n3;
+        cin>>n1>>n2>>n3;
+        vi a(n1,0),b(n2,0),c(n3,0);
+        int sum1=0,sum2=0,sum3=0;
+        for(int i=0;i<n1;i++){
+            cin>>a[i];
+            sum1+=a[i];
+        }
+        for(int i=0;i<n2;i++){
+            cin>>b[i];
+            sum2+=b[i];
+        }
+        for(int i=0;i<n3;i++){
+            cin>>c[i];
+            sum3+=c[i];
+        }
+        sort(all(a));
+        sort(all(b));
+        sort(all(c));
+        int ans=0;
+        int sum=sum1+sum2+sum3;
+        ans=max(ans,sum-2*sum1);
+        ans=max(ans,sum-2*sum2);
+        ans=max(ans,sum-2*sum3);
+        ans=max(ans,sum-2*(a[0]+b[0]));
+        ans = max(ans,sum-2*(a[0]+c[0]));
+        ans = max(ans,sum-2*(b[0]+c[0]));
+        cout<<ans<<endl;
+    }
+}
