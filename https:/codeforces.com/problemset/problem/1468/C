@@ -1,0 +1,73 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+ struct cmp{
+    bool operator()(const pair<int,int>& v1,const pair<int,int>& v2) const{
+        if(v1.first<v2.first)return true;
+        if(v1.first==v2.first){
+            if(v1.second>v2.second)return true;
+            else return false;
+        }
+        return false;
+    }};
+
+int32_t main()
+{
+    int t=1;
+    // cin>>t;
+    while(t--){
+        priority_queue<pii,vpii,cmp> pq;
+        int q;
+        cin>>q;
+        int st=1;
+        bool vis[500002];
+        memset(vis,false,sizeof(vis));
+        vi ans;
+        int person=0;
+        while(q--){
+            int n;
+            cin>>n;
+            if(n==1){
+                int m;
+                cin>>m;
+                person++;
+                pq.push({m,person});
+            }
+             if(n==2){
+                while(vis[st]) st++;
+                vis[st]=1;
+                ans.pb(st);
+                st++;
+            }
+             if(n==3){
+                while(vis[pq.top().ss]){
+                    pq.pop();
+                }
+                ans.pb(pq.top().ss);
+                vis[pq.top().ss]=1;
+                pq.pop();
+            }
+        }
+        for(auto x:ans) cout<<x<<" ";
+        cout<<endl;
+    }
+}
