@@ -1,0 +1,59 @@
+#include<bits/stdc++.h>
+using namespace std;
+int n,s,b,x,pos;
+long long fact[1005];
+const long long mod=1e9+7;
+long long power(long long x,long long p)
+{
+    long long ans=1;
+    while(p)
+    {
+        if(p&1)
+        {
+            ans=ans*x%mod;
+        }
+        p>>=1;
+        x=x*x%mod;
+    }
+    return ans;
+}
+int main(void)
+{
+    while(scanf("%d %d %d",&n,&x,&pos)!=EOF)
+    {
+        int l=0,r=n;
+        s=0,b=0;
+        while(l<r)
+        {
+            int m=(l+r)/2;
+            if(m<pos)
+            {
+                l=m+1;
+                s++;
+            }
+            else if(m>pos)
+            {
+                r=m;
+                b++;
+            }
+            else
+            {
+                l=m+1;
+            }
+        }
+        fact[0]=1;
+        for(int i=1;i<=n;i++)
+        {
+            fact[i]=(fact[i-1]*i)%mod;
+        }
+        if(x-1-s<0 || n-x-b<0 || n-1-s-b<0)
+        {
+            printf("0\n");
+        }
+        else
+        {
+            printf("%lld\n",fact[x-1]*power(fact[x-1-s],mod-2)%mod*fact[n-x]%mod*power(fact[n-x-b],mod-2)%mod*fact[n-1-s-b]%mod);
+        }
+    }
+    return 0;
+}
