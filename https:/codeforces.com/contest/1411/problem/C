@@ -1,0 +1,68 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000000007
+vector<int> adj[200005];
+map<int,bool> vis;
+bool dfs(int node,int parent){
+    vis[node] = true;
+    for(auto ele:adj[node]){
+        if(ele == parent){
+            return true;
+        }
+ 
+        if(!vis[ele]){
+            if(dfs(ele,parent)) return 1;
+        }
+        
+    }
+    return false;
+}
+void fun(){
+    int n,m;
+    cin>>n>>m;
+    vis.clear();
+    for(int i=0;i<=n;i++) adj[i].clear();
+    for(int i=0;i<m;i++){
+        int x,y;
+        cin>>x>>y;
+        adj[x].pb(y);
+    }
+    int cycles = 0;
+    int loops = 0;
+    for(int i=1;i<=n;i++){
+        if(adj[i].size()==0) continue;
+        else if(adj[i][0] == i) loops++;
+        else if(!vis[i]){
+            if(dfs(i,i)) cycles++;
+        }
+    }
+    // cout<<loops<<" "<<cycles<<endl;
+    cout<<m-loops+cycles<<endl;
+}
+ 
+int32_t main() {
+    int t = 1;
+    cin>>t;
+    while(t--){
+        fun();
+    }
+    return 0;
+}
