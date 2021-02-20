@@ -1,0 +1,47 @@
+//naman jain
+#include <bits/stdc++.h>
+#define ll              long long
+#define print(m)        std::cout << std::fixed << std::setprecision(7) << m <<endl;
+#define fast            ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL);
+using namespace std;
+int main()
+{
+    fast;
+    ll q;cin>>q;
+    while(q--)
+    {
+        ll n,i,j,a;
+        double t;
+        cin>>n>>t;
+        double arr[n],brr[n];
+        for(i=0;i<n;i++)
+        {
+            cin>>arr[i];
+        }
+        a=0;
+        for(i=0;i<n;i++)
+        {
+            if(arr[i]<t/2)
+                brr[i]=0;
+            else if(arr[i]>t/2)
+                brr[i]=1;
+            else if(arr[i]==t/2&&a%2==0)
+            {
+                brr[i]=0;
+                a++;
+            }
+            else if(arr[i]==t/2&&a%2!=0)
+            {
+                brr[i]=1;
+                a++;
+            }
+        }
+        for(i=0;i<n;i++)
+            cout<<brr[i]<<" ";
+        cout<<"\n";
+
+
+    }
+}
+
+ 
