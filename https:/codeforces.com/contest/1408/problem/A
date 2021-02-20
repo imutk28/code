@@ -1,0 +1,72 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000000007
+vector<int> adj[200005];
+map<int,bool> vis;
+
+ 
+int32_t main() {
+    int t = 1;
+    cin>>t;
+    while(t--){
+    	int n;
+    	cin>>n;
+        int a[n], b[n], c[n];
+        for(int &i : a) {
+            cin >> i;
+        }
+ 
+        for(int &i : b) {
+            cin >> i;
+        }
+ 
+        for(int &i : c) {
+            cin >> i;
+        }
+ 
+        int p[n];
+        p[0] = a[0];
+ 
+        for(int i = 1; i < n; ++i) {
+            if(a[i] == p[i - 1]) {
+                p[i] = b[i];
+            } else {
+                p[i] = a[i];
+            }
+        }
+ 
+        if(p[0] == p[n - 1]) {
+            p[n - 1] = c[n - 1];
+            if(p[n - 2] == p[n - 1]) {
+                p[n - 1] = b[n - 1];
+                if(p[n - 1] == p[0]) {
+                    p[n - 1] = a[n - 1];
+                }
+            }
+        }
+ 
+        for(int i : p) {
+            cout << i << ' ';
+        }
+        cout<<endl;
+    }
+    return 0;
+}
