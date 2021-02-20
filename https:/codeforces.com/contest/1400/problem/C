@@ -1,0 +1,101 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+       string str;
+       int n,x;
+          cin>>str;
+          cin>>x;
+          int i,j;
+          n=str.length();
+          string temp(n+1,'0');
+          for(j=1;j<=n;j++)
+          {
+            temp[j]=str[j-1];
+          }
+          string ans(n+1,'1');
+          bool f=0;
+          for(j=1;j<=n;j++)
+          {
+             if(temp[j]=='0')
+             {
+              if((j-x)<1&&(j+x)<=n)
+              {
+                ans[j+x]='0';
+              }
+              else if((j-x)>=1&&(j+x)>n)
+              {
+                ans[j-x]='0';
+              }
+              else if((j-x)>=1&&(j+x)<=n)
+              {
+                ans[j-x]='0',ans[j+x]='0';
+              }
+             }
+          }
+          //cout<<ans<<'\n';
+          for(j=1;j<=n;j++)
+          {
+            if(temp[j]=='1')
+            {
+              if((j-x)>=1&&(j+x)<=n&&ans[j-x]=='0'&&ans[j+x]=='0')
+              {
+                f=1;
+                break;
+              }
+              if((j-x)<1&&(j+x)<=n&&ans[j+x]=='0')
+              {
+                f=1;
+                break;
+              }
+              if(j+x>n&&(j-x)>=1&&ans[j-x]=='0')
+              {
+                f=1;
+                break;
+              }
+              if((j-x)<1&&(j+x)>n)
+              {
+                f=1;
+                break;
+              }
+ 
+ 
+            }
+ 
+          }
+          if(f)
+          {
+            cout<<-1<<'\n';
+          }
+          else
+          {
+            for(j=1;j<=n;j++)
+              cout<<ans[j];
+            cout<<'\n';
+          }
+    }
+}
