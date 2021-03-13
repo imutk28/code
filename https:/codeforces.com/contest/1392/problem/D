@@ -1,0 +1,59 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        s=s+s;
+        stack<char> st;
+        int i=1;
+        st.push(s[0]);
+        while(i<n&&s[i]==st.top()){
+            st.push(s[i]);
+            i++;
+        }
+        int j=n-1;
+        while(j>i&&s[j]==st.top()){
+            st.push(s[j]);
+            j--;
+        }
+        int ans=0;
+        if(st.size()==n){
+        	ans+=(st.size()+2)/3;
+        }
+        else ans+=(st.size())/3;
+        for(int k=i;k<=j;k++){
+            if(j-k>=2){
+                if(s[k]=='R'&&s[k+1]=='R'&&s[k+2]=='R') ans++,k=k+2;
+                if(s[k]=='L'&&s[k+1]=='L'&&s[k+2]=='L') ans++,k=k+2;
+            }
+        }
+        cout<<ans<<endl;
+    }
+}
