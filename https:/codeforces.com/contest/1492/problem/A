@@ -1,0 +1,40 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int p,a,b,c;
+        cin>>p>>a>>b>>c;
+        
+        int temp1=a-p%a;
+        int temp2=b-p%b;
+        int temp3=c-p%c;
+        if(p%a==0) temp1=0;
+        if(p%b==0) temp2=0;
+        if(p%c==0) temp3=0;
+        cout<<min(temp1,min(temp3,temp2))<<endl;
+    }
+}
