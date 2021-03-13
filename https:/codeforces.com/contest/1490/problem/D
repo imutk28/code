@@ -1,0 +1,56 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+void sub(int l,int r,vi& v,vi& ans,int depth){
+    if(l>r) return;
+    if(l==r){
+        ans[l]=depth;
+        return;
+    }
+    int tmp=l;
+    for(int i=l+1;i<=r;i++){
+        if(v[i]>v[tmp]){
+            tmp=i;
+        }
+    }
+    ans[tmp]=depth;
+    sub(l,tmp-1,v,ans,depth+1);
+    sub(tmp+1,r,v,ans,depth+1);
+}
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        vi v(n,0);
+        for(int i=0;i<n;i++) cin>>v[i];
+        vi ans(n,0);
+        sub(0,n-1,v,ans,0);
+        for(int i=0;i<n;i++){
+            cout<<ans[i]<<" ";
+        }
+        cout<<endl;
+    }
+}
