@@ -1,0 +1,47 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+int cal(string s,char a){
+    if(s.size()==1){
+        return s[0]!=a;
+    }
+    int mid =s.size()/2;
+    int fir=cal(string(s.begin(),s.begin()+mid),a+1);
+    fir+= s.size()/2-count(s.begin()+mid,s.end(),a);
+    int sec=cal(string(s.begin()+mid,s.end()),a+1);
+    sec += s.size()/2-count(s.begin(),s.begin()+mid,a);
+    return min(fir,sec);
+}
+
+int32_t main()
+{
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        string s;
+        cin>>s;
+        int b=cal(s,'a');
+        cout<<b<<endl;
+    }
+}
