@@ -1,0 +1,84 @@
+#include <bits/stdc++.h>
+   
+#define ll long long
+#define ld long double
+#define boost(); ios_base::sync_with_stdio(0); cin.tie(); cout.tie();
+#define file(s) freopen(s".in", "r", stdin); freopen(s".out", "w", stdout);
+#define NAME "substr3"
+#define F first
+#define S second
+#define pb push_back
+#define pp pop_back
+   
+using namespace std;
+ 
+const int N = (int)2e5 + 11;
+ll n, m, k, x, y, a[N], b[N];
+bool u[N];
+ 
+int main(){
+	boost();
+	
+	cin >> n >> m;
+	cin >> x >> k >> y;
+	for(int i = 1; i <= n; i++)
+		cin >> a[i];
+	for(int i = 1; i <= m; i++)
+		cin >> b[i];
+	
+	int del = 1;
+	int cur = 1;
+	while(del <= n){
+		if(a[del] == b[cur])
+			u[del] = 1, cur++;
+		del++;	
+	}	
+	if(cur != m + 1){
+		cout << -1;
+		return 0;
+	}	
+	
+	int l = 1;
+	ll ans = 0;
+	bool ok = 1;
+	while(l <= n){
+		ll r, mx = 0;
+		while(u[l] and l <= n)
+			l++;
+		if(l > n)
+			break;
+		r = l;
+		while(!u[r] and r <= n)
+			mx = max(mx, a[r]), r++;
+		r--;
+		//cout << l << " " << r << "\n";	
+			
+		if(r - l + 1 >= k){
+			ll cnt = r - l + 1;
+			if(y * k >= x){
+				ans += cnt / k * x + (cnt - cnt / k * k) * y;
+			}
+			else{
+				if(mx > max(a[l - 1], a[r + 1]))
+					ans += x + (cnt - k) * y;
+				else
+					ans += y * cnt;	
+			}
+		}
+		else{
+			ll cnt = (r - l + 1);
+			if(mx > max(a[l - 1], a[r + 1]))
+				ok = 0;
+			else
+				ans += y * cnt;	
+		}
+		l = r + 1;				
+	}
+	
+	if(ok)
+		cout << ans;
+	else
+		cout << -1;			
+      
+	return 0;
+}
