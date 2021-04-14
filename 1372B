@@ -1,0 +1,46 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+
+bool is_prime(int n){
+    for(int i=2;i<=sqrt(n);i++){
+        if(n%i==0) return false;
+    }
+    return true;
+}
+
+int32_t main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        if(n%2 == 0) cout << n/2 << " " << n/2 << "\n";
+		else {
+			if(is_prime(n)) cout << "1 " << n-1 << "\n";
+			else {
+				int i = 3;
+				while(n%i != 0) i += 2;
+				cout << n/i << " " << n - n/i << "\n";
+			}
+		}
+    }
+}
