@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+ 
+typedef long long           lol;
+typedef unsigned long long  ulol;
+#define ci                  cin>>
+#define co                  cout<<
+#define el                  <<'\n' 
+#define te(i)               int i; cin>>i
+#define ten                 te(n)
+#define tem                 te(m)
+#define tek                 te(k)
+#define tex                 te(x)
+#define tey                 te(y)
+#define tez                 te(z)
+#define pb                  push_back
+#define ub                  upper_bound
+#define lb                  lower_bound
+#define bs                  binary_search
+#define all(x)              x.begin(), x.end()
+#define fo(i,a,b,p)         for (int i=a; i<b; i+=p)
+#define foi(n)              fo(i,0,n,1)
+#define foj(n)              fo(j,0,n,1)
+#define foin                foi(n)
+#define foim                foi(m)
+#define fojn                foj(n)
+#define fojm                foj(m)
+#define ff                  first
+#define ss                  second    
+#define ex                  return 0
+#define cnu                 continue
+ 
+int main(){
+    ios_base::sync_with_stdio(0); 
+    cin.tie(0);      cout.tie(0);
+    
+    int _tatakae_ = 1;
+    ci _tatakae_;
+    while(_tatakae_--){
+    	ten;
+    	int a[n];
+    	foin ci a[i];
+ 
+    	set<int> s1, s2;
+    	foin s1.insert(i+1), s2.insert(i+1);
+    	vector<int> x,y;
+    	x.pb(a[0]), y.pb(a[0]);
+    	s1.erase(a[0]), s2.erase(a[0]);
+    	fo(i, 1, n, 1){
+    		if(a[i]==a[i-1]){
+    			x.pb(*s1.begin()), s1.erase(s1.begin());
+    			auto ii=s2.lb(a[i]);
+    			ii--;
+    			y.pb(*ii), s2.erase(ii);
+    		}
+    		else{
+    			x.pb(a[i]), y.pb(a[i]);
+    			s1.erase(a[i]), s2.erase(a[i]);
+    		}
+    	}
+    	for(int q: x) co q<<' '; co '\n';
+    	for(int q: y) co q<<' '; co '\n';
+ 
+ 
+ 
+ 
+ 
+ 
+    }
+    ex;
+}
