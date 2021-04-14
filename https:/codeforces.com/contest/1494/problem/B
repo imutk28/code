@@ -1,0 +1,188 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+	int t;
+	cin>>t;
+	while(t--){
+		int n,u,r,l,d,f=1;
+		cin>>n>>u>>r>>d>>l;
+		if(u==n){
+			if(d==n){
+				if(r>=2&&l>=2)
+					f=1;
+				else 
+					f=0;
+			}
+			else if(d==n-1){
+				if(((r>=2&&l>=1)||((r>=1&&l>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(r>=1&&l>=1)
+					f=1;
+				else 
+					f=0;
+			}
+		}
+	else if(u==n-1){
+		if(d==n){
+			if(((r>=2&&l>=1)||((r>=1&&l>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else if(d==n-1){
+				if(((r>=1&&l>=1)||((r>=2||l>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(r>=1||l>=1)
+					f=1;
+				else 
+					f=0;
+			}
+	}
+	if(d==n){
+			if(u==n){
+				if(r>=2&&l>=2)
+					f=1;
+				else 
+					f=0;
+			}
+			else if(u==n-1){
+				if(((r>=2&&l>=1)||((r>=1&&l>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(r>=1&&l>=1)
+					f=1;
+				else 
+					f=0;
+			}
+		}
+	else if(d==n-1){
+		if(u==n){
+			if(((r>=2&&l>=1)||((r>=1&&l>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else if(u==n-1){
+				if(((r>=1&&l>=1)||((r>=2||l>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(r>=1||l>=1)
+					f=1;
+				else 
+					f=0;
+			}
+	}
+	if(f==0)
+		cout<<"NO"<<endl;
+	else{
+		if(r==n){
+			if(l==n){
+				if(u>=2&&d>=2)
+					f=1;
+				else 
+					f=0;
+			}
+			else if(l==n-1){
+				if(((u>=2&&d>=1)||((u>=1&&d>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(u>=1&&d>=1)
+					f=1;
+				else 
+					f=0;
+			}
+		}
+	else if(r==n-1){
+		if(l==n){
+			if(((u>=2&&d>=1)||((u>=1&&d>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else if(l==n-1){
+				if(((u>=1&&d>=1)||((u>=2||d>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(u>=1||d>=1)
+					f=1;
+				else 
+					f=0;
+			}
+	}
+	if(l==n){
+			if(r==n){
+				if(u>=2&&d>=2)
+					f=1;
+				else 
+					f=0;
+			}
+			else if(r==n-1){
+				if(((u>=2&&d>=1)||((u>=1&&d>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(u>=1&&d>=1)
+					f=1;
+				else 
+					f=0;
+			}
+		}
+	else if(l==n-1){
+		if(r==n){
+			if(((u>=2&&d>=1)||((u>=1&&d>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else if(r==n-1){
+				if(((u>=1&&d>=1)||((u>=2||d>=2))))
+					f=1;
+				else 
+					f=0;
+			}
+			else{
+				if(u>=1||d>=1)
+					f=1;
+				else 
+					f=0;
+			}
+	}
+		if(f==1)
+			cout<<"YES"<<endl;
+		else 
+			cout<<"NO"<<endl;
+		
+		
+		
+		
+	}
+		
+		
+		
+		
+		
+	}
+	return 0;
+}
