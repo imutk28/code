@@ -1,0 +1,85 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+const int N=2010;
+
+int32_t main() {
+    int t;
+    cin>>t;
+    while(t--){
+        int n,m,i,j,c=0;
+        cin>>n>>m;
+        int a[n][m];
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<m;j++)
+            {
+                cin>>a[i][j];
+            }
+        }
+        for(i=0;i<n;i++)
+        {
+            for(j=0;j<m;j++)
+            {
+                int p=0;
+                if(i-1>=0)
+                {
+                    p++;
+                }
+                if(i+1<n)
+                {
+                    p++;
+                }
+                if(j+1<m)
+                {
+                    p++;
+                }
+                if(j-1>=0)
+                {
+                    p++;
+                }
+                if(a[i][j]>p)
+                {
+                    c++;
+                    break;
+                }
+                a[i][j]=p;
+                
+            }
+        }
+        if(c!=0)
+        {
+            cout<<"NO"<<"\n";
+        }
+        else
+        {
+            cout<<"YES"<<"\n";
+            for(i=0;i<n;i++)
+            {
+                for(j=0;j<m;j++)
+                {
+                    cout<<a[i][j]<<" ";
+                }
+                cout<<"\n";
+            }
+        }
+    }
+}
