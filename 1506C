@@ -1,0 +1,44 @@
+#include <bits/stdc++.h>
+#define ll long long
+#define ff first
+#define ss second
+#define pb push_back
+#define mp make_pair
+#define all(x) (x).begin(), (x).end()
+#define sz(x) (int)x.size()
+
+using namespace std;
+
+const int inf = (int)(1e9 + 7), maxn = 1e5 + 7;
+
+void solve(){            
+	string a, b;
+	cin >> a >> b;
+	int n=a.size();
+       int m=b.size();
+	int ans = m+n;
+	for(int k = 1; k <= min(m,n); k++){
+		for(int i = 0; i < n; i++){
+			for(int j = 0; j < m; j++){
+				string s = a.substr(i, k), t = b.substr(j, k);
+				if(s == t && i + k - 1 < n && j + k - 1 <m){
+					int qwe = i + n- 1 - (i + k - 1), qwer = j + m - 1 - (j + k - 1);
+					
+					ans = min(ans, qwe + qwer);
+				}	
+			}
+		}
+	}
+	cout << ans << '\n';
+
+}
+
+int main(){
+	ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0);
+	int tc;
+	cin >> tc;
+	while(tc--){
+		solve();
+	}
+	return 0;
+}
