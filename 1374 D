@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+
+#define ll long long
+#define dbl double
+#define ldbl long double
+#define v vector
+#define forp(i, a, b) for(int i = a; i < b; ++i)
+#define forn(i, a, b) for(int i = a; i > b; --i)
+#define forpo(i, a) for(int i = 0; i < a; ++i)
+#define forno(i, a) for(int i = a; i > -1; --i)
+#define inputarr(a, n) forpo(i, n) cin >> a[i];
+#define vi vector<int>
+#define vs vector<string>
+#define str string
+#define pb push_back
+#define ull unsigned long long
+#define nextline "\n"
+#define TEST cout << "TEST" << endl;
+
+using namespace std;
+
+int mod = 1e9 + 7;
+
+void solve()
+{
+    int n, k;
+    cin >> n >> k;
+    vi a(n);
+    inputarr(a, n);
+    forpo(i, n) a[i] = (k - a[i] % k) % k;
+    sort(a.begin(), a.end());
+    while(a.size() > 0 && a[0] == 0) a.erase(a.begin());
+    int maxconsecutive = 1, num = -1, cur = 0;
+    forpo(i, a.size())
+    {
+        if(i != 0 && a[i] != a[i - 1])
+        {
+            if(cur >= maxconsecutive)
+            {
+                maxconsecutive = cur;
+                num = a[i - 1];
+            }
+            cur = 0;
+        }
+        ++cur;
+    }
+    if(a.size() > 0 && cur >= maxconsecutive)
+    {
+        maxconsecutive = cur;
+        num = a[a.size() - 1];
+    }
+    cout << (ull)(maxconsecutive - 1) * (ull)k + (ull)num + 1 << nextline;
+}
+
+int main()
+{
+    ios::sync_with_stdio(0);
+    cin.tie(0);
+    int t;
+    cin >> t;
+    cout << fixed << setprecision(15);
+    while(t--) solve();
+    return 0;
+}
