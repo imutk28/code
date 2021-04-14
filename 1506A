@@ -1,0 +1,19 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+	// your code goes here
+	int t;
+	cin>>t;
+	while(t--){
+		 unsigned  long  long n,m,x;
+		cin>>n>>m>>x;
+		 unsigned  long  long col=(x)/n;
+		if(x%n!=0) col++;
+		 unsigned  long  long row=(x)%n;
+		if(row==0) row=n;
+		// cout<<row<<" "<<col<<endl;
+		cout<<(row-1)*m+col<<endl;
+	}
+	return 0;
+}
