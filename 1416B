@@ -1,0 +1,61 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+vector<array<int,3>> ans;
+vi v(MAXN,0);
+void temp(int x,int y,int z){
+    v[x]=v[x]-x*z;
+    v[y]+=x*z;
+    ans.pb({x,y,z});
+}
+
+int32_t main() {
+    int t=1;
+    cin>>t;
+    while(t--){
+        int n;
+        cin>>n;
+        v.clear();
+        int sum=0;
+        for(int i=1;i<n+1;i++){
+            cin>>v[i];
+            sum+=v[i];
+        }
+        ans.clear();
+        if(sum%n) cout<<"-1"<<endl;
+        else{
+            int a=sum/n;
+            for(int i=2;i<=n;i++){
+                if(v[i]%i){
+                    temp(1,i,i-v[i]%i);
+                }
+                temp(i,1,v[i]/i);
+            }
+            for(int i=2;i<=n;i++){
+                temp(1,i,a);
+            }
+            cout<<ans.size()<<endl;
+            for(int i=0;i<ans.size();i++){
+                cout<<ans[i][0]<<" "<<ans[i][1]<<" "<<ans[i][2]<<endl;
+            }
+        }
+    }
+}
