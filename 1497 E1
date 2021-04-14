@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+#define int long long
+#define endl '\n'
+#define vi vector<int>
+#define vb vector<bool>
+#define pii pair<int,int>
+#define mod 1000000007
+#define ss second
+#define ff first
+#define vpii vector<pii>
+#define vvpii vector<vpii>
+#define vvi vector<vi>
+#define pb push_back
+#define vs vector<string>
+#define all(x) x.begin(),x.end()
+#define mii map<int,int>
+#define vd vector<double>
+#define deb(x) cout<<#x<<" -> "<<x<<endl
+const int inf=0x3f3f3f3f3f3f3f3f;
+#define MAXN 1000005
+const int N=2010;
+int prime[10000001] = { 0 }; 
+int k[10000001] = { 0 }; 
+void sieve(){
+    for (int i = 1; i < 10000001; i++) 
+        k[i] = i;
+    for (int i = 2; i < 10000001; i++) {
+        if (prime[i] == 0) 
+            for (int j = i; j < 10000001; j += i) {
+                prime[j] = 1;
+                while (k[j] % (i * i) == 0) 
+                    k[j] /= (i * i); 
+            } 
+    } 
+}  
+
+int32_t main() {
+    int t=1;
+    cin>>t;
+    sieve();
+    while(t--){
+        int n,w;
+        cin>>n>>w;
+        vi v(n,0);
+        for(int i = 0; i < n; i++)cin>>v[i];
+        int ans = 0;
+        for(int i=0;i<n;i++){
+            mii mp;
+            while(i<n){
+                int a=v[i];
+                int b=k[a];
+                if(mp[b]==0){
+                    i++;
+                    mp[b]++;
+                }
+                else break;
+            }
+            i--;
+            ans++;
+        }
+        cout<<ans<<endl;
+    }
+}
